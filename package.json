@@ -6,7 +6,7 @@
   "private": true,
   "devDependencies": {
     "@types/jest": "^24.0.18",
-    "@types/node": "^12.7.12",
+    "@types/node": "^14.0.23",
     "@typescript-eslint/eslint-plugin": "^2.3.3",
     "@typescript-eslint/parser": "^2.3.3",
     "eslint": "^7.4.0",
@@ -16,7 +16,7 @@
     "typescript": "^3.6.4"
   },
   "scripts": {
-    "lint": "yarn lint:types && yarn lint:ci",
+    "lint": "yarn lint:types && eslint ./src",
     "lint:types": "yarn tsc --noEmit -p .",
     "compile": "tsc $1",
     "build": "tsc -w",
