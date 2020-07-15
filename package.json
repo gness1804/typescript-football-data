@@ -21,10 +21,13 @@
     "compile": "tsc $1",
     "build": "tsc -w",
     "start": "nodemon build/index.js",
-    "go": "concurrently \"yarn build\" \"yarn start\""
+    "go": "concurrently \"yarn build\" \"yarn start\"",
+    "prettier:check": "prettier --check src/*",
+    "prettier:write": "prettier --write src/*"
   },
   "dependencies": {
     "concurrently": "^5.2.0",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "prettier": "^2.0.5"
   }
 }
