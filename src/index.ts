@@ -8,10 +8,16 @@ const matches: string[][] = readFileSync('football.csv', {
 
 let count = 0;
 
+enum GameResult {
+  HomeWin = 'H',
+  AwayWin = 'A',
+  Draw = 'D',
+}
+
 for (const match of matches) {
   if (
-    (match[1] === 'Man United' && match[5] === 'H') ||
-    (match[2] === 'Man United' && match[5] === 'A')
+    (match[1] === 'Man United' && match[5] === GameResult.HomeWin) ||
+    (match[2] === 'Man United' && match[5] === GameResult.AwayWin)
   )
     count++;
 }
