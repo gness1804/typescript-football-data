@@ -3,6 +3,10 @@ import { GameResult } from './types';
 
 const matches = new CSVFileReader('football.csv').getDataFromFile();
 
+const dateOfFirstMatch = matches[0][0];
+/* eslint-disable-next-line no-console */
+console.info(`The first match took place on ${dateOfFirstMatch}`);
+
 let count = 0;
 
 for (const match of matches) {
