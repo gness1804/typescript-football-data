@@ -1,8 +1,6 @@
 import { CSVFileReader } from './CSVFileReader';
 
-const reader = new CSVFileReader('football.csv');
-reader.read();
-const matches = reader.data;
+const matches = new CSVFileReader('football.csv').getDataFromFile();
 
 let count = 0;
 

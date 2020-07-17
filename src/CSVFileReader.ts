@@ -3,7 +3,7 @@ import { readFileSync } from 'fs';
 interface CSVFileReaderI {
   fileName: string;
   data: string[][];
-  read: () => void;
+  getDataFromFile: () => string[][];
 }
 
 export class CSVFileReader implements CSVFileReaderI {
@@ -13,11 +13,16 @@ export class CSVFileReader implements CSVFileReaderI {
     this.data = [];
   }
 
-  read(): void {
+  private read(): void {
     this.data = readFileSync(this.fileName, {
       encoding: 'utf-8',
     })
       .split('\n')
       .map((entry: string): string[] => entry.split(','));
+  }
+
+  getDataFromFile(): string[][] {
+    this.read();
+    return this.data;
   }
 }

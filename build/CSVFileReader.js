@@ -13,6 +13,10 @@ class CSVFileReader {
             .split('\n')
             .map((entry) => entry.split(','));
     }
+    getDataFromFile() {
+        this.read();
+        return this.data;
+    }
 }
 exports.CSVFileReader = CSVFileReader;
 //# sourceMappingURL=CSVFileReader.js.map
