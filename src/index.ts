@@ -1,10 +1,8 @@
-import { readFileSync } from 'fs';
+import { CSVFileReader } from './CSVFileReader';
 
-const matches: string[][] = readFileSync('football.csv', {
-  encoding: 'utf-8',
-})
-  .split('\n')
-  .map((entry: string): string[] => entry.split(','));
+const reader = new CSVFileReader('football.csv');
+reader.read();
+const matches = reader.data;
 
 let count = 0;
 

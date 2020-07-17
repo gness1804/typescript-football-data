@@ -1,11 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const fs_1 = require("fs");
-const matches = fs_1.readFileSync('football.csv', {
-    encoding: 'utf-8',
-})
-    .split('\n')
-    .map((entry) => entry.split(','));
+const CSVFileReader_1 = require("./CSVFileReader");
+const reader = new CSVFileReader_1.CSVFileReader('football.csv');
+reader.read();
+const matches = reader.data;
 let count = 0;
 var GameResult;
 (function (GameResult) {
