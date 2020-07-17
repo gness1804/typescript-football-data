@@ -1,14 +1,9 @@
 import { CSVFileReader } from './CSVFileReader';
+import { GameResult } from './types';
 
 const matches = new CSVFileReader('football.csv').getDataFromFile();
 
 let count = 0;
-
-enum GameResult {
-  HomeWin = 'H',
-  AwayWin = 'A',
-  Draw = 'D',
-}
 
 for (const match of matches) {
   if (

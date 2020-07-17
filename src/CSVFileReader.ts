@@ -1,13 +1,9 @@
 import { readFileSync } from 'fs';
-
-interface CSVFileReaderI {
-  fileName: string;
-  data: string[][];
-  getDataFromFile: () => string[][];
-}
+import { dateStringToDate } from './utils';
+import { CSVFileReaderI, GameResult, GameTuple } from './types';
 
 export class CSVFileReader implements CSVFileReaderI {
-  data: string[][];
+  data: GameTuple[];
 
   constructor(public fileName: string) {
     this.data = [];
@@ -18,10 +14,23 @@ export class CSVFileReader implements CSVFileReaderI {
       encoding: 'utf-8',
     })
       .split('\n')
-      .map((entry: string): string[] => entry.split(','));
+      .map((entry: string): string[] => entry.split(','))
+      .map(
+        (row: string[]): GameTuple => {
+          return [
+            dateStringToDate(row[0]),
+            row[1],
+            row[2],
+            parseInt(row[3]),
+            parseInt(row[4]),
+            row[5] as GameResult,
+            row[6],
+          ];
+        },
+      );
   }
 
-  getDataFromFile(): string[][] {
+  getDataFromFile(): GameTuple[] {
     this.read();
     return this.data;
   }
