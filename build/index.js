@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const CSVFileReader_1 = require("./CSVFileReader");
 const types_1 = require("./types");
-const matches = new CSVFileReader_1.CSVFileReader('football.csv').getDataFromFile();
+const GameReader_1 = require("./GameReader");
+const matches = new GameReader_1.GameReader('football.csv').getDataFromFile();
 const dateOfFirstMatch = matches[0][0];
 /* eslint-disable-next-line no-console */
 console.info(`The first match took place on ${dateOfFirstMatch}`);

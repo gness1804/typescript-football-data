@@ -1,8 +1,9 @@
 import { CSVFileReader } from './CSVFileReader';
-import { GameResult, GameTuple } from './types';
+import { GameReaderI, GameResult, GameTuple } from './types';
 import { dateStringToDate } from './utils';
 
-export class GameReader extends CSVFileReader {
+export class GameReader extends CSVFileReader<GameTuple>
+  implements GameReaderI {
   mapRow(row: string[]): GameTuple {
     return [
       dateStringToDate(row[0]),

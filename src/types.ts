@@ -6,6 +6,10 @@ export enum GameResult {
 
 export interface CSVFileReaderI {
   fileName: string;
+}
+
+export interface GameReaderI {
+  mapRow: (row: string[]) => GameTuple;
   data: GameTuple[];
   getDataFromFile: () => GameTuple[];
 }
