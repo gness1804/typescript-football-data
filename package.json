@@ -22,8 +22,8 @@
     "build": "tsc -w",
     "start": "nodemon build/index.js",
     "go": "concurrently \"yarn build\" \"yarn start\"",
-    "prettier:check": "prettier --check src/*",
-    "prettier:write": "prettier --write src/*"
+    "prettier:check": "prettier --check src/*.ts",
+    "prettier:write": "prettier --write src/*.ts"
   },
   "dependencies": {
     "concurrently": "^5.2.0",
