@@ -1,5 +1,5 @@
 import { readFileSync } from 'fs';
-import { DataReaderI, GameResult, GameTuple } from './types';
+import { DataReaderI } from './types';
 
 export class CSVFileReader implements DataReaderI {
   data: string[][] = [];
