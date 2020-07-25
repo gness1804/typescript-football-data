@@ -4,14 +4,14 @@ export enum GameResult {
   Draw = 'D',
 }
 
-export interface CSVFileReaderI {
-  fileName: string;
+export interface GameReaderI {
+  reader: DataReaderI;
+  loadGames: () => void;
 }
 
-export interface GameReaderI {
-  mapRow: (row: string[]) => GameTuple;
-  data: GameTuple[];
-  getDataFromFile: () => GameTuple[];
+export interface DataReaderI {
+  read: () => void;
+  data: string[][];
 }
 
 export type GameTuple = [

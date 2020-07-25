@@ -2,18 +2,22 @@ import { CSVFileReader } from './CSVFileReader';
 import { GameResult } from './types';
 import { GameReader } from './GameReader';
 
-const matches = new GameReader('football.csv').getDataFromFile();
+const genericReader = new CSVFileReader('football.csv');
+const gameReader = new GameReader(genericReader);
+gameReader.loadGames();
 
-const dateOfFirstMatch = matches[0][0];
+const { games } = gameReader;
+
+const dateOfFirstMatch = games[0][0];
 /* eslint-disable-next-line no-console */
-console.info(`The first match took place on ${dateOfFirstMatch}`);
+console.info(`The first match took place on ${dateOfFirstMatch}.`);
 
 let count = 0;
 
-for (const match of matches) {
+for (const game of games) {
   if (
-    (match[1] === 'Man United' && match[5] === GameResult.HomeWin) ||
-    (match[2] === 'Man United' && match[5] === GameResult.AwayWin)
+    (game[1] === 'Man United' && game[5] === GameResult.HomeWin) ||
+    (game[2] === 'Man United' && game[5] === GameResult.AwayWin)
   )
     count++;
 }
