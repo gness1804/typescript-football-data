@@ -1,12 +1,5 @@
-export enum GameResult {
-  HomeWin = 'H',
-  AwayWin = 'A',
-  Draw = 'D',
-}
-
-export interface GameReaderI {
-  reader: DataReaderI;
-  loadGames: () => void;
+export interface Analyzer {
+  run(games: GameData): string;
 }
 
 export interface DataReaderI {
@@ -14,7 +7,7 @@ export interface DataReaderI {
   data: string[][];
 }
 
-export type GameTuple = [
+export type GameData = [
   Date,
   string,
   string,
@@ -23,3 +16,18 @@ export type GameTuple = [
   GameResult,
   string,
 ];
+
+export interface GameReaderI {
+  reader: DataReaderI;
+  loadGames: () => void;
+}
+
+export enum GameResult {
+  HomeWin = 'H',
+  AwayWin = 'A',
+  Draw = 'D',
+}
+
+export interface OutputTarget {
+  print(report: string): void;
+}
