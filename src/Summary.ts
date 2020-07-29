@@ -1,5 +1,5 @@
-import { Analyzer, OutputTarget } from './types';
+import { AnalyzerI, OutputTarget } from './types';
 
 export class Summary {
-  constructor(public analyzer: Analyzer, public outputTarget: OutputTarget) {}
+  constructor(public analyzer: AnalyzerI, public outputTarget: OutputTarget) {}
 }

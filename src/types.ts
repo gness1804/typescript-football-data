@@ -1,5 +1,5 @@
-export interface Analyzer {
-  run(games: GameData): string;
+export interface AnalyzerI {
+  run(games: GameData[]): string;
 }
 
 export interface DataReaderI {
