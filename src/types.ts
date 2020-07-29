@@ -28,6 +28,12 @@ export enum GameResult {
   Draw = 'D',
 }
 
-export interface OutputTarget {
+export interface ReporterI {
   print(report: string): void;
+}
+
+export interface SummaryI {
+  analyzer: AnalyzerI;
+  reporter: ReporterI;
+  buildAndPrintReport: (data: GameData[]) => void;
 }
