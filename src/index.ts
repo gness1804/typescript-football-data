@@ -1,5 +1,4 @@
 import { CSVFileReader } from './CSVFileReader';
-import { GameResult } from './types';
 import { GameReader } from './GameReader';
 import { Summary } from './Summary';
 import { WinsAnalysis } from './analyzers/WinsAnalysis';
