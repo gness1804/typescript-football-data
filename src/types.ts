@@ -30,6 +30,7 @@ export enum GameResult {
 
 export interface ReporterI {
   print(report: string): void;
+  outputFile?: string;
 }
 
 export interface SummaryI {
