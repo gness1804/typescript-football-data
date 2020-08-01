@@ -1,12 +1,7 @@
-import { CSVFileReader } from './CSVFileReader';
 import { GameReader } from './GameReader';
 import { Summary } from './Summary';
-import { WinsAnalysis } from './analyzers/WinsAnalysis';
-import { ConsoleReport } from './reporters/ConsoleReport';
-import { HtmlReport } from './reporters/HtmlReport';
 
-const genericReader = new CSVFileReader('football.csv');
-const gameReader = new GameReader(genericReader);
+const gameReader = GameReader.buildWithCsv('football.csv');
 gameReader.loadGames();
 
 const { games } = gameReader;

@@ -1,7 +1,11 @@
 import { DataReaderI, GameReaderI, GameResult, GameData } from './types';
 import { dateStringToDate } from './utils';
+import { CSVFileReader } from './CSVFileReader';
 
 export class GameReader implements GameReaderI {
+  static buildWithCsv(file: string): GameReader {
+    return new GameReader(new CSVFileReader(file));
+  }
   games: GameData[] = [];
 
   constructor(public reader: DataReaderI) {}

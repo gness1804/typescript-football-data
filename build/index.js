@@ -1,10 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const CSVFileReader_1 = require("./CSVFileReader");
 const GameReader_1 = require("./GameReader");
 const Summary_1 = require("./Summary");
-const genericReader = new CSVFileReader_1.CSVFileReader('football.csv');
-const gameReader = new GameReader_1.GameReader(genericReader);
+const gameReader = GameReader_1.GameReader.buildWithCsv('football.csv');
 gameReader.loadGames();
 const { games } = gameReader;
 const dateOfFirstMatch = games[0][0];
