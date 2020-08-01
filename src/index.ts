@@ -15,12 +15,5 @@ const dateOfFirstMatch = games[0][0];
 /* eslint-disable-next-line no-console */
 console.info(`The first match took place on ${dateOfFirstMatch}.`);
 
-const analyzer = new WinsAnalysis('Chelsea');
-const reporter = new ConsoleReport();
-
-new Summary(analyzer, reporter).buildAndPrintReport(games);
-
-const analyzer2 = new WinsAnalysis('Man United');
-const reporter2 = new HtmlReport('./report.html');
-
-new Summary(analyzer2, reporter2).buildAndPrintReport(games);
+const summary = Summary.createSummaryWithHtml('Everton', './report.html');
+summary.buildAndPrintReport(games);
