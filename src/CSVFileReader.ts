@@ -1,26 +1,16 @@
 import { readFileSync } from 'fs';
-import { CSVFileReaderI, GameResult, GameTuple } from './types';
+import { DataReaderI } from './types';
 
-export abstract class CSVFileReader<T> implements CSVFileReaderI {
-  data: T[];
+export class CSVFileReader implements DataReaderI {
+  data: string[][] = [];
 
-  constructor(public fileName: string) {
-    this.data = [];
-  }
+  constructor(public fileName: string) {}
 
-  abstract mapRow(row: string[]): T;
-
-  protected read(): void {
+  read(): void {
     this.data = readFileSync(this.fileName, {
       encoding: 'utf-8',
     })
       .split('\n')
-      .map((entry: string): string[] => entry.split(','))
-      .map(this.mapRow);
-  }
-
-  getDataFromFile(): T[] {
-    this.read();
-    return this.data;
+      .map((entry: string): string[] => entry.split(','));
   }
 }

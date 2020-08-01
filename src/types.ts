@@ -1,20 +1,13 @@
-export enum GameResult {
-  HomeWin = 'H',
-  AwayWin = 'A',
-  Draw = 'D',
+export interface AnalyzerI {
+  run(games: GameData[]): string;
 }
 
-export interface CSVFileReaderI {
-  fileName: string;
+export interface DataReaderI {
+  read: () => void;
+  data: string[][];
 }
 
-export interface GameReaderI {
-  mapRow: (row: string[]) => GameTuple;
-  data: GameTuple[];
-  getDataFromFile: () => GameTuple[];
-}
-
-export type GameTuple = [
+export type GameData = [
   Date,
   string,
   string,
@@ -23,3 +16,25 @@ export type GameTuple = [
   GameResult,
   string,
 ];
+
+export interface GameReaderI {
+  reader: DataReaderI;
+  loadGames: () => void;
+}
+
+export enum GameResult {
+  HomeWin = 'H',
+  AwayWin = 'A',
+  Draw = 'D',
+}
+
+export interface ReporterI {
+  print(report: string): void;
+  outputFile?: string;
+}
+
+export interface SummaryI {
+  analyzer: AnalyzerI;
+  reporter: ReporterI;
+  buildAndPrintReport: (data: GameData[]) => void;
+}

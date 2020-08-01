@@ -11,12 +11,7 @@ class CSVFileReader {
             encoding: 'utf-8',
         })
             .split('\n')
-            .map((entry) => entry.split(','))
-            .map(this.mapRow);
-    }
-    getDataFromFile() {
-        this.read();
-        return this.data;
+            .map((entry) => entry.split(','));
     }
 }
 exports.CSVFileReader = CSVFileReader;
